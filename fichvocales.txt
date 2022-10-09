@@ -1,0 +1,1 @@
+Este es el fichero que contiene varios vocales en una frase.
