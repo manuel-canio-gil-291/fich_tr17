@@ -3,6 +3,7 @@ package es.mcg;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class ContarPalabras {
@@ -24,6 +25,21 @@ public class ContarPalabras {
         catch(Exception e)
         {
             e.printStackTrace();
+        }
+        finally
+        {
+            try {
+                if(br != null)
+                {
+                    br.close();
+                }
+                if(fr != null)
+                {
+                    fr.close();
+                }
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         }
     }
 }
