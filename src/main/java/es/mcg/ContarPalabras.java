@@ -16,29 +16,37 @@ public class ContarPalabras {
             file = new File("frase.txt");
             fr = new FileReader(file);
             br = new BufferedReader(fr);
-
+            int contadorPalabras = 0;
             String frase = br.readLine();
-            StringTokenizer stFrase = new StringTokenizer(frase);
-
-            System.out.println("El fichero contiene "+stFrase.countTokens()+" palabras");
+            while(frase != null)
+            {
+                StringTokenizer stFrase = new StringTokenizer(frase);
+                contadorPalabras = contadorPalabras + stFrase.countTokens();
+                frase = br.readLine();
+            }
+            System.out.println("El fichero contiene "+contadorPalabras+" palabras");
         }
-        catch(Exception e)
+        catch(IOException ioException)
         {
-            e.printStackTrace();
+            ioException.printStackTrace();
         }
         finally
         {
-            try {
-                if(br != null)
-                {
+            if(br != null)
+            {
+                try {
                     br.close();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
                 }
-                if(fr != null)
-                {
+            }
+            if(fr != null)
+            {
+                try {
                     fr.close();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
                 }
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
             }
         }
     }
